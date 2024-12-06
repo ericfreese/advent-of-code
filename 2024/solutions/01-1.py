@@ -1,11 +1,8 @@
-lefts = []
-rights = []
+def parse(line):
+    return [int(id) for id in line.split()]
+
 
 with open("inputs/01", "r") as f:
-    for line in f:
-        left, right = line.split()
-
-        lefts.append(int(left))
-        rights.append(int(right))
+    lefts, rights = zip(*[parse(line) for line in f])
 
 print(sum(abs(left - right) for left, right in zip(sorted(lefts), sorted(rights))))
